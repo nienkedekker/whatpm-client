@@ -1,0 +1,63 @@
+
+.form-container {
+  background-color: #fafafa;
+  border: 1px solid #eee;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  @media (min-width: $mq-desktop) {
+    width: $item-form-width;
+  }
+
+  h2 {
+    padding: 10px;
+  }
+}
+
+.form-element {
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+
+  select {
+    border: 1px solid #928dcd;
+    border-radius: 5px;
+    padding: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  button {
+    border-radius: 5px;
+    color: white;
+    background: linear-gradient(to left, #a4a2ff, #765efd);
+    border: 1px solid #928dcd;
+    width: 100%;
+    padding: 1em;
+    font-size: 16px;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  .form-label-inline {
+    display: inline-block;
+  }
+
+  .form-input {
+    border: 1px solid #928dcd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .form-input-inline {
+    display: inline-block;
+    width: auto;
+  }
+}
