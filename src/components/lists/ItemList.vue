@@ -7,17 +7,17 @@
       Loading items..
     </div>
     <section v-else class="item-list">
-      <BookList
+      <BookList v-if="items.allBooks"
           :allBooks="items.allBooks"
           :amountOfBooks="items.allBooks.length"
           :isLoggedIn="isLoggedIn">
       </BookList>
-      <MovieList
+      <MovieList v-if="items.allMovies"
           :allMovies="items.allMovies"
           :amountOfMovies="items.allMovies.length"
           :isLoggedIn="isLoggedIn">
       </MovieList>
-      <ShowList
+      <ShowList v-if="items.allShows"
           :allShows="items.allShows"
           :amountOfShows="items.allShows.length"
           :isLoggedIn="isLoggedIn"

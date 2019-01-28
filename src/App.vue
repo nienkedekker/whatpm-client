@@ -23,10 +23,6 @@ export default {
       return this.$store.getters.isLoggedIn;
     },
   },
-  mounted() {
-    console.log('lala');
-    console.log(process.env.VUE_APP_API_BASE_URL);
-  },
 };
 </script>
 
