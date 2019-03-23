@@ -4,8 +4,10 @@ import Router from 'vue-router';
 
 import Index from './components/pages/Index.vue';
 import Year from './components/pages/Year.vue';
-import AddItem from './components/actions/add/AddItem.vue';
 
+import Search from './components/pages/Search.vue';
+
+import AddItem from './components/actions/add/AddItem.vue';
 import EditBook from './components/actions/edit/EditBook.vue';
 import EditMovie from './components/actions/edit/EditMovie.vue';
 import EditShow from './components/actions/edit/EditShow.vue';
@@ -47,6 +49,11 @@ export default new Router({
       path: '/year/:year',
       name: 'Year',
       component: Year,
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search,
     },
     {
       path: '/login',
