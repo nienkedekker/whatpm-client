@@ -6,6 +6,9 @@
     <div v-if="loading" class="loading">
       Loading items..
     </div>
+    <section v-if="noItems">
+      I did not log any items this year 😔
+    </section>
     <section v-else class="item-list">
       <BookList v-if="items.allBooks"
           :allBooks="items.allBooks"
@@ -34,7 +37,11 @@ import ShowList from './ShowList';
 
 export default {
   name: 'ItemList',
-  components: { BookList, MovieList, ShowList },
+  components: {
+    BookList,
+    MovieList,
+    ShowList,
+  },
   props: {
     yearSelection: {
       type: [String, Number],
@@ -51,6 +58,30 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
+    },
+    noBooks() {
+      if (this.items) {
+        if (this.items.allBooks < 1) {
+          return true;
+        }
+      } return false;
+    },
+    noMovies() {
+      if (this.items) {
+        if (this.items.allMovies < 1) {
+          return true;
+        }
+      } return false;
+    },
+    noShows() {
+      if (this.items) {
+        if (this.items.allShows < 1) {
+          return true;
+        }
+      } return false;
+    },
+    noItems() {
+      return this.noShows && this.noMovies && this.noBooks;
     },
   },
   watch: {
@@ -69,7 +100,9 @@ export default {
           console.log(error);
           this.errored = true;
         })
-        .finally(() => this.loading = false);
+        .finally(() => {
+          this.loading = false;
+        });
     },
   },
 };

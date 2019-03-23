@@ -12,8 +12,11 @@
         </div>
       </li>
     </ol>
-    <div class="total">
+    <div class="total" v-if="allBooks.length > 0">
       Total: {{ amountOfBooks }}
+    </div>
+    <div class="total" v-else>
+      No books logged this year.
     </div>
   </section>
 </template>

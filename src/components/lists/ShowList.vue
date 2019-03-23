@@ -13,8 +13,11 @@
         </div>
       </li>
     </ol>
-    <div class="total">
+    <div class="total" v-if="allShows.length > 0">
       Total: {{ amountOfShows }}
+    </div>
+    <div class="total" v-else>
+      No shows logged this year.
     </div>
   </section>
 </template>

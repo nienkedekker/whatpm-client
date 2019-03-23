@@ -13,8 +13,11 @@
         </div>
       </li>
     </ol>
-    <div class="total">
+    <div class="total" v-if="allMovies.length > 0">
       Total: {{ amountOfMovies }}
+    </div>
+    <div class="total" v-else>
+      No movies logged this year.
     </div>
   </section>
 </template>
