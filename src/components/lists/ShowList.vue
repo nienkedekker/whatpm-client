@@ -3,9 +3,10 @@
     <h1>TV Shows</h1>
     <ol v-if="allShows">
       <li v-for="show in allShows" :key="show._id">
-        <span :class="$style.title">{{ show.title }} (season {{ show.season }})</span>
+        <span :class="$style.title">{{ show.title }}</span>
+        <span :class="$style.separator">&nbsp;</span>
+        <span :class="$style.season">(season {{ show.season }})</span>
         <span v-if="show.redo" class="redo">*</span>
-
         <div v-if="isLoggedIn" class="edit-item">
           <RouterLink :to="{ name: 'EditShow', params: { id: show._id} }">Edit</RouterLink>
           <button @click.stop="deleteShow(show)">Delete</button>
@@ -46,6 +47,7 @@ export default {
 </script>
 <style lang="scss" module>
   .title {
-    color: #505050;
+    color: #352f6a;
   }
+  .season {}
 </style>
