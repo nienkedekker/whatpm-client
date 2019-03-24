@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <header class="logo">
-      <h1>what.</h1>
+      <h1>
+        <RouterLink :to="{ name: 'Index' }"> what </RouterLink>
+      </h1>
     </header>
     <Navigation :is-logged-in="isLoggedIn"></Navigation>
     <YearNavigation> </YearNavigation>
@@ -28,6 +30,7 @@ export default {
 
 <style lang="scss">
   @import "assets/css/main";
+  @import url('https://fonts.googleapis.com/css?family=Mr+Dafoe');
 
   .content {
     margin: 20px 20px 100px 20px;
@@ -52,11 +55,15 @@ export default {
     align-items: center;
 
     h1 {
+      width: 100%;
       display: block;
       margin: 0;
       padding: 0;
-      color: yellow;
-      font-size: 2em;
+      background: -webkit-linear-gradient(#7a53ee, #c0caeb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 4em;
+      font-family: 'Mr Dafoe', cursive;
     }
   }
 </style>

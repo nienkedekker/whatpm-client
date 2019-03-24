@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const search = {
   /**
-   * Fetch all items given a query
+   * Search all items by title given a query
    * @function
    * @param {string} query - The given title
    */

@@ -50,14 +50,14 @@
   .form-input {
     border: 1px solid #928dcd;
     border-radius: 5px;
-    padding: 10px;
     margin-bottom: 20px;
     width: 100%;
     font-size: 16px;
+    padding: 1em;
   }
+}
 
-  .form-input-inline {
-    display: inline-block;
-    width: auto;
-  }
+.form-input-inline {
+  display: inline-block;
+  width: auto;
 }

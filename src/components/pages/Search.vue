@@ -1,19 +1,30 @@
 <template>
-  <section class="search">
-    <div class="search-box">
-      <input v-model="query" type="text" placeholder="Title of item" aria-label="Title">
-      <button @click="searchItemsByTitle" type="button">Search</button>
-    </div>
-    <div class="search-results">
-      <div v-if="hasResults">
-        <ul>
-        <li v-for="result in searchResults" :key="result._id">
-          {{ result.title }}
-        </li>
-        </ul>
+  <section class="content">
+    <div class="form-container">
+      <h2>Search 🕵️‍♀️</h2>
+      <div :class="$style.searchRow">
+        <div class="form-element" :class="$style.searchInputContainer">
+          <label for="search">
+            <input id="search" v-model="query" type="text" placeholder="Title of item" aria-label="Title" class="form-input form-input-inline" :class="$style.searchInput">
+          </label>
+        </div>
+
+        <div class="form-element" :class="$style.searchButtonContainer">
+          <button @click="searchItemsByTitle" type="button" :class="$style.searchButton">Search</button>
+        </div>
       </div>
-      <div v-if="noResultsFound">
-        No results for {{ query }}
+
+      <div class="search-results">
+        <div v-if="hasResults">
+          <ul>
+          <li v-for="result in searchResults" :key="result._id">
+            {{ result.title }}
+          </li>
+          </ul>
+        </div>
+        <div v-if="noResultsFound">
+          No results for {{ query }}
+        </div>
       </div>
     </div>
   </section>
@@ -53,6 +64,17 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" module>
+  .searchRow {
+    display: flex;
+  }
+
+  .searchInputContainer {
+    width: 65%;
+  }
+
+  .searchButtonContainer {
+    width: 30%;
+  }
 
 </style>
