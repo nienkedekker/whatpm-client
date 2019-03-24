@@ -1,29 +1,3 @@
-# whatpm-client
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6f6dac2f-f05f-434f-89e5-1d84a8f4e699/deploy-status)](https://app.netlify.com/sites/whatpm/deploys)
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Frontend for what.pm.
