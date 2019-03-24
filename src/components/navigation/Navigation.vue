@@ -8,7 +8,7 @@
     </span>
     <span v-else>
       <RouterLink key="not-logged-in" :to="{ name: 'Login' }">Login</RouterLink>
-      <RouterLink key="logged-in" :to="{ name: 'Register' }">Register</RouterLink>
+      <RouterLink v-if="isDev" key="logged-in" :to="{ name: 'Register' }">Register</RouterLink>
     </span>
   </nav>
 </template>
@@ -16,6 +16,11 @@
 <script>
 export default {
   name: 'Navigation',
+  data() {
+    return {
+      environment: process.env.VUE_APP_ENV,
+    };
+  },
   props: {
     isLoggedIn: {
       type: Boolean,
@@ -26,6 +31,11 @@ export default {
       this.$store.dispatch('logout').then(() => {
         this.$router.push({ name: 'Index' });
       });
+    },
+  },
+  computed: {
+    isDev() {
+      return process.env.VUE_APP_ENV === 'development';
     },
   },
 };
