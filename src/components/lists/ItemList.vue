@@ -123,7 +123,7 @@ export default {
     .tvshow-list {
       width: calc(100%);
       @media (min-width: $mq-tablet) {
-        width: calc(100%/4);
+        width: calc(100%/3.7);
       }
 
       ul, li, ol {

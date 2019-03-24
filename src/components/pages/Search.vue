@@ -16,11 +16,20 @@
 
       <div class="search-results">
         <div v-if="hasResults">
-          <ul>
-          <li v-for="result in searchResults" :key="result._id">
-            {{ result.title }}
-          </li>
-          </ul>
+          <p>Your search for "{{ query }}" returned {{ amountOfResults }} results:</p>
+          <h3>WIP 🚧</h3>
+
+          <div v-for="result in searchResults" :key="result._id">
+            <div v-if="result.itemtype === 'Book'">
+              {{ result.title }} -- {{ result.author }} -- read in {{ result.belongs_to_year }}
+            </div>
+            <div v-if="result.itemtype === 'Show'">
+              {{ result.title }} -- season {{ result.season }} -- watched in {{ result.belongs_to_year }}
+            </div>
+            <div v-if="result.itemtype === 'Movie'">
+              {{ result.title }} -- {{ result.director }} -- watched in {{ result.belongs_to_year }}
+            </div>
+          </div>
         </div>
         <div v-if="noResultsFound">
           No results for {{ query }}
@@ -59,6 +68,9 @@ export default {
     },
     noResultsFound() {
       return this.showNoResultsMessage && this.query;
+    },
+    amountOfResults() {
+      return this.searchResults.length;
     },
   },
 };
