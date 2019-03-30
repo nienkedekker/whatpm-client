@@ -4,7 +4,7 @@
       <h2>Search 🕵️‍♀️</h2>
       <div :class="$style.searchRow">
         <div class="form-element" :class="$style.searchInputContainer">
-          <p>Start searching by typing your query! WIP 🚧</p>
+          <p>Start searching by typing..</p>
           <label for="search">
             <input id="search" v-model="query" type="text" placeholder="Start typing!" aria-label="Title" class="form-input form-input-inline" :class="$style.searchInput">
           </label>
@@ -13,16 +13,23 @@
 
       <div class="search-results">
         <div v-if="hasResults && query !== ''">
-          <p>Your search for "{{ query }}" returned {{ amountOfResults }} results:</p>
-          <div v-for="result in searchResults" :key="result._id">
-            <div v-if="result.itemtype === 'Book'">
-              {{ result.title }} -- {{ result.author }} -- read in {{ result.belongs_to_year }}
+          <p>Your search for <strong>{{ query }}</strong> returned {{ amountOfResults }} results:</p>
+          <div v-if="bookResults.length > 0">
+            <b>Books</b><br>
+            <div v-for="book in bookResults" :key="book._id">
+              <a :href="`year/${book.belongs_to_year}`">{{ book.title }} by {{ book.author}} ({{ book.belongs_to_year }})</a>
             </div>
-            <div v-if="result.itemtype === 'Show'">
-              {{ result.title }} -- season {{ result.season }} -- watched in {{ result.belongs_to_year }}
+          </div>
+          <div v-if="movieResults.length > 0">
+            <b>Movies</b><br>
+            <div v-for="movie in movieResults" :key="movie._id">
+              <a :href="`year/${movie.belongs_to_year}`">{{ movie.title }} by {{ movie.director}} ({{ movie.belongs_to_year }})</a>
             </div>
-            <div v-if="result.itemtype === 'Movie'">
-              {{ result.title }} -- {{ result.director }} -- watched in {{ result.belongs_to_year }}
+          </div>
+          <div v-if="tvShowResults.length > 0">
+            <b>TV Shows</b><br>
+            <div v-for="show in tvShowResults" :key="show._id">
+              <a :href="`year/${show.belongs_to_year}`">{{ show.title }}, season {{ show.season}} ({{ show.belongs_to_year }})</a>
             </div>
           </div>
         </div>
@@ -45,23 +52,46 @@ export default {
       query: '',
       searchResults: [],
       showNoResultsMessage: false,
+      bookResults: [],
+      movieResults: [],
+      tvShowResults: [],
     };
   },
   methods: {
-    searchItemsByTitle() {
+    searchItems() {
       search
-        .searchByTitle(this.query)
+        .searchByQuery(this.query)
         .then((response) => {
           this.searchResults = response;
           this.showNoResultsMessage = response.length <= 0;
+          this.filterItemsByType(response);
         })
         .catch(error => console.log(error));
+    },
+    filterItemsByType() {
+      const results = this.searchResults;
+      Array.from(results).forEach((item) => {
+        switch (item.itemtype) {
+          case 'Book':
+            this.bookResults.push(item);
+            break;
+          case 'Movie':
+            this.movieResults.push(item);
+            break;
+          case 'Show':
+            this.tvShowResults.push(item);
+            break;
+        }
+      });
     },
   },
   watch: {
     query: {
       handler: debounce(function () {
-        this.searchItemsByTitle();
+        this.bookResults = [];
+        this.movieResults = [];
+        this.tvShowResults = [];
+        this.searchItems();
       }, 250),
     },
   },
