@@ -1,33 +1,32 @@
 <template>
   <section class="content">
     <div class="form-container">
-      <h2>Search 🕵️‍♀️</h2>
-      <div :class="$style.searchRow">
+      <h2>🕵️‍♀️ Search️</h2>
         <div class="form-element" :class="$style.searchInputContainer">
-          <p>Start searching by typing..</p>
+          <p>Start searching by typing in the form!</p>
           <label for="search">
-            <input id="search" v-model="query" type="text" placeholder="Start typing!" aria-label="Title" class="form-input form-input-inline" :class="$style.searchInput">
+            <input id="search" v-model="query" type="text" placeholder="Start typing.." aria-label="search" class="form-input">
           </label>
-        </div>
       </div>
-
-      <div class="search-results">
-        <div v-if="hasResults && query !== ''">
+    </div>
+    <div>
+      <div :class="$style.searchResultsContainer">
+        <div v-if="hasResults && query !== ''" :class="$style.results">
           <p>Your search for <strong>{{ query }}</strong> returned {{ amountOfResults }} results:</p>
-          <div v-if="bookResults.length > 0">
-            <b>Books</b><br>
+          <div v-if="bookResults.length > 0" :class="$style.books">
+            <h2>📖 Books</h2>
             <div v-for="book in bookResults" :key="book._id">
               <a :href="`year/${book.belongs_to_year}`">{{ book.title }} by {{ book.author}} ({{ book.belongs_to_year }})</a>
             </div>
           </div>
-          <div v-if="movieResults.length > 0">
-            <b>Movies</b><br>
+          <div v-if="movieResults.length > 0" :class="$style.movies">
+            <h2>🎬 Movies</h2>
             <div v-for="movie in movieResults" :key="movie._id">
               <a :href="`year/${movie.belongs_to_year}`">{{ movie.title }} by {{ movie.director}} ({{ movie.belongs_to_year }})</a>
             </div>
           </div>
-          <div v-if="tvShowResults.length > 0">
-            <b>TV Shows</b><br>
+          <div v-if="tvShowResults.length > 0" :class="$style.shows">
+            <h2>📺 TV Shows</h2>
             <div v-for="show in tvShowResults" :key="show._id">
               <a :href="`year/${show.belongs_to_year}`">{{ show.title }}, season {{ show.season}} ({{ show.belongs_to_year }})</a>
             </div>
@@ -81,6 +80,8 @@ export default {
           case 'Show':
             this.tvShowResults.push(item);
             break;
+          default:
+            break;
         }
       });
     },
@@ -110,19 +111,31 @@ export default {
 </script>
 
 <style lang="scss" module>
-  .searchRow {
-    display: flex;
-  }
-
   label {
     margin-bottom: 1em;
   }
-  .searchInputContainer {
-    /*width: 100%;*/
+
+  .searchForm {
+    width: 100%;
   }
 
-  .searchButtonContainer {
-    width: 30%;
+  .searchResultsContainer {
+    margin: 1em auto;
+    width: 50%;
+    line-height: 2em;
   }
 
+  .results {
+    padding: 20px;
+
+    h2 {
+      margin: 0 0 10px;
+      border-bottom: 1px solid #bbbbbb;
+    }
+  }
+
+  .books, .movies, .shows {
+    margin: 20px 0 20px 0;
+    padding: 20px 0 20px 0;
+  }
 </style>

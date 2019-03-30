@@ -32,6 +32,10 @@ export default {
   @import "assets/css/main";
   @import url('https://fonts.googleapis.com/css?family=Mr+Dafoe');
 
+  * {
+    box-sizing: border-box;
+  }
+
   .content {
     margin: 20px 20px 100px 20px;
     @media (min-width: $mq-tablet) {
