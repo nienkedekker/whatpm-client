@@ -1,6 +1,7 @@
 <template>
   <nav class="navigation">
     <RouterLink :to="{ name: 'Index' }"> Home </RouterLink>
+    <RouterLink :to="{ name: 'About' }"> About </RouterLink>
     <RouterLink :to="{ name: 'Search' }"> Search </RouterLink>
     <RouterLink :to="{ name: 'Stats' }"> Stats </RouterLink>
     <span v-if="isLoggedIn">

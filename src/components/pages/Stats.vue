@@ -1,16 +1,16 @@
 <template>
   <div class="content">
-    <h1>Stats</h1>
-    <p>To do:</p>
+    <h1>⚠️ ️Stats (WIP) ⚠️</h1>
+    <p>To do:️</p>
     <ul>
-      <li>Progress this year</li>
+      <li>Progress this year (bar chart)</li>
+      <li>Totals all time (bar chart): </li>
       <ul>
-        <li>Get current year</li>
-        <li>Retrieve count of items logged this year</li>
-        <li>One bar chart for each item (3 total)s</li>
+        <li>Books: {{ booksCount }}</li>
+        <li>Movies: {{ moviesCount }}</li>
+        <li>Shows (seasons, really): {{ showsCount }}</li>
       </ul>
-      <li>Totals all time: books:{{ booksCount }} movies:{{ moviesCount }} shows:{{ showsCount }}</li>
-      <li>Logging behavior: which year did I not log or log the most?</li>
+      <li>Logging behavior (line chart): which year did I not log at all, or log a lot?</li>
     </ul>
   </div>
 </template>

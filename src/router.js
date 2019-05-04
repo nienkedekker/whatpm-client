@@ -5,6 +5,7 @@ import Router from 'vue-router';
 import Index from './components/pages/Index.vue';
 import Year from './components/pages/Year.vue';
 
+import About from './components/pages/About.vue';
 import Search from './components/pages/Search.vue';
 import Stats from './components/pages/Stats.vue';
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
     },
     {
       path: '/add-item',
