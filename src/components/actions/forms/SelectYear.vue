@@ -5,7 +5,8 @@
         What year does this {{ type }} belong to?
       </span>
       <select id="belongs_to_year" v-model.trim="item.belongs_to_year">
-        <option v-for="i in getRange()" :key="i">
+        <option selected="selected" :value="currentYear">{{ currentYear }}</option>
+        <option v-for="i in getRange" :key="i">
           {{ i }}
         </option>
       </select>
@@ -22,9 +23,12 @@ export default {
     item: Object,
     type: String,
   },
-  methods: {
+  computed: {
+    currentYear() {
+      return helpers.getCurrentYear();
+    },
     getRange() {
-      return helpers.range(2007, helpers.getCurrentYear());
+      return helpers.range(2007, helpers.getCurrentYear() - 1);
     },
   },
 };
