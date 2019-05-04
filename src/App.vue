@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div v-if="isDev" class="development-warning">⚠️ DEV connected with {{ server}} ⚠️</div>
     <header class="logo">
       <h1>
         <RouterLink :to="{ name: 'Index' }"> what </RouterLink>
@@ -23,6 +24,12 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
+    },
+    isDev() {
+      return process.env.VUE_APP_ENV === 'development';
+    },
+    server() {
+      return process.env.VUE_APP_API_BASE_URL;
     },
   },
 };
@@ -69,5 +76,11 @@ export default {
       font-size: 4em;
       font-family: 'Mr Dafoe', cursive;
     }
+  }
+
+  .development-warning {
+    background: rgb(164, 237, 250);
+    color: black;
+    padding: 20px;
   }
 </style>

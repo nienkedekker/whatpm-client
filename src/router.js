@@ -6,6 +6,7 @@ import Index from './components/pages/Index.vue';
 import Year from './components/pages/Year.vue';
 
 import Search from './components/pages/Search.vue';
+import Stats from './components/pages/Stats.vue';
 
 import AddItem from './components/actions/add/AddItem.vue';
 import EditBook from './components/actions/edit/EditBook.vue';
@@ -54,6 +55,11 @@ export default new Router({
       path: '/search',
       name: 'Search',
       component: Search,
+    },
+    {
+      path: '/stats',
+      name: 'Stats',
+      component: Stats,
     },
     {
       path: '/login',

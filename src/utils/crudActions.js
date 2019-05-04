@@ -3,18 +3,6 @@ import Cookie from 'js-cookie';
 
 export const actions = {
   /**
-   * Deprecated, use fetchAllItemsByYear
-   * Fetch all items given a certain item type, and return them
-   * @function
-   * @param {string} type - The item type. Can be book, movie or show.
-   */
-  fetchAllItems(type) {
-    return axios
-      .get(`${process.env.VUE_APP_API_BASE_URL}/${type}`)
-      .then(response => response.data);
-  },
-
-  /**
    * ex: host.com/api/years/year/2017
    * Fetch _all_ items given a certain year, and return them
    * Similar to `fetchAllItemsByTypeAndYear` but only takes 1 API call instead of 3
@@ -24,18 +12,6 @@ export const actions = {
   fetchAllItemsByYear(year) {
     return axios
       .get(`${process.env.VUE_APP_API_BASE_URL}/years/year/${year}`)
-      .then(response => response.data);
-  },
-
-  /**
-   * Fetch all items given a certain type and year, and return them
-   * @function
-   * @param {string} type - The item type
-   * @param {string} year - The given year
-   */
-  fetchAllItemsByTypeAndYear(type, year) {
-    return axios
-      .get(`${process.env.VUE_APP_API_BASE_URL}/${type}/year/${year}`)
       .then(response => response.data);
   },
 
