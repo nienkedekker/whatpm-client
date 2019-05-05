@@ -3,56 +3,54 @@
     <h1>⚠️ ️Stats (WIP) ⚠️</h1>
     <p>To do:️</p>
     <ul>
-      <li>Progress this year (bar chart)</li>
-      <li>Totals all time (bar chart): </li>
+      <li>Progress this year (bar chart):</li>
       <ul>
-        <li>Books: {{ booksCount }}</li>
-        <li>Movies: {{ moviesCount }}</li>
-        <li>Shows (seasons, really): {{ showsCount }}</li>
+        <li>Books: {{ allItemsInCurrentYear.books }}</li>
+        <li>Movies: {{ allItemsInCurrentYear.movies  }}</li>
+        <li>Shows (seasons, really): {{ allItemsInCurrentYear.shows}}</li>
       </ul>
-      <li>Logging behavior (line chart): which year did I not log at all, or log a lot?</li>
+      <li>Totals all time (pie chart): </li>
+      <ul>
+        <li>Books: {{ allItems.books }}</li>
+        <li>Movies: {{ allItems.movies  }}</li>
+        <li>Shows (seasons, really): {{ allItems.shows}}</li>
+      </ul>
     </ul>
   </div>
 </template>
 
 <script>
 import { statsActions } from '../../utils/statsActions';
+import { helpers } from '../../utils/helpers';
 
 export default {
   name: 'Stats',
-  components: {
-  },
   data() {
     return {
       errors: [],
-      booksCount: 0,
-      moviesCount: 0,
-      showsCount: 0,
+      allItems: [],
+      allItemsInCurrentYear: [],
     };
   },
   created() {
-    this.fetchBooks();
-    this.fetchMovies();
-    this.fetchShows();
+    this.getAllItems();
+    this.getAllItemsInCurrentYear();
   },
   methods: {
-    fetchBooks() {
-      statsActions
-        .fetchCountOfGivenItem('books')
-        .then(response => (this.booksCount = response))
-        .catch(error => console.log(error));
+    getAllItems() {
+      statsActions.fetchAllTimeItems()
+        .then(response => this.allItems = response)
+        .catch((error) => {
+          console.log(error);
+        });
     },
-    fetchMovies() {
-      statsActions
-        .fetchCountOfGivenItem('movies')
-        .then(response => (this.moviesCount = response))
-        .catch(error => console.log(error));
-    },
-    fetchShows() {
-      statsActions
-        .fetchCountOfGivenItem('shows')
-        .then(response => (this.showsCount = response))
-        .catch(error => console.log(error));
+    getAllItemsInCurrentYear() {
+      const currentYear = helpers.getCurrentYear();
+      statsActions.fetchAllItemsByYear(currentYear)
+        .then(response => this.allItemsInCurrentYear = response)
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

@@ -1,15 +1,17 @@
 import axios from 'axios';
 
 export const statsActions = {
-  // this should be 1 api call instead of 3 for each item
-  fetchCountOfGivenItem(item) {
+  // get all items per year
+  // http://localhost:3000/api/stats/count/2012/all
+  fetchAllItemsByYear(year) {
     return axios
-      .get(`${process.env.VUE_APP_API_BASE_URL}/stats/count/${item}`)
+      .get(`${process.env.VUE_APP_API_BASE_URL}/stats/count/${year}/all`)
       .then(response => response.data);
   },
-  fetchCountOfGivenItemPerYear(item) {
+  //  * ex: host.com/api/stats/count/all
+  fetchAllTimeItems() {
     return axios
-      .get(`${process.env.VUE_APP_API_BASE_URL}/stats/count/${item}`)
+      .get(`${process.env.VUE_APP_API_BASE_URL}/stats/count/all`)
       .then(response => response.data);
   },
 };
