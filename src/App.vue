@@ -41,6 +41,7 @@ export default {
 
   * {
     box-sizing: border-box;
+    line-height: 1.5;
   }
 
   .content {

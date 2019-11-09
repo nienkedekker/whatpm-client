@@ -2,19 +2,17 @@
   <div class="content">
     <h1>⚠️ ️Stats (WIP) ⚠️</h1>
     <p>To do:️</p>
+    <p>Progress this year (bar chart):</p>
     <ul>
-      <li>Progress this year (bar chart):</li>
-      <ul>
-        <li>Books: {{ allItemsInCurrentYear.books }}</li>
-        <li>Movies: {{ allItemsInCurrentYear.movies  }}</li>
-        <li>Shows (seasons, really): {{ allItemsInCurrentYear.shows}}</li>
-      </ul>
-      <li>Totals all time (pie chart): </li>
-      <ul>
-        <li>Books: {{ allItems.books }}</li>
-        <li>Movies: {{ allItems.movies  }}</li>
-        <li>Shows (seasons, really): {{ allItems.shows}}</li>
-      </ul>
+      <li>Books: {{ allItemsInCurrentYear.books }}</li>
+      <li>Movies: {{ allItemsInCurrentYear.movies  }}</li>
+      <li>Shows (seasons, really): {{ allItemsInCurrentYear.shows}}</li>
+    </ul>
+    <p>Totals all time (pie chart):</p>
+    <ul>
+      <li>Books: {{ allItems.books }}</li>
+      <li>Movies: {{ allItems.movies  }}</li>
+      <li>Shows (seasons, really): {{ allItems.shows}}</li>
     </ul>
   </div>
 </template>
