@@ -59,7 +59,7 @@ export default {
     background-color: #e0e0e0;
     margin-bottom: -1px;
     margin-right: -1px;
-    outline: none; // not a11y friendy but ~*aesthetics*~
+    margin-left: 0; // safari fix
   }
 
   .tab-button:hover {
