@@ -2,14 +2,14 @@
   <section class="form-container">
     <h2>Add TV Show</h2>
     <form v-if="isLoggedIn" @submit="addShow">
-      <ShowForm :show="show" :errors="errors"></ShowForm>
+      <show-form :show="show" :errors="errors"/>
     </form>
   </section>
 </template>
 
 <script>
 import ShowForm from '../forms/ShowForm';
-import { actions } from '../../../utils/crudActions';
+import { createItem } from '../../../utils/crudActions';
 
 export default {
   name: 'AddShow',
@@ -28,8 +28,7 @@ export default {
   methods: {
     addShow(evt) {
       evt.preventDefault();
-      actions
-        .createItem('shows', this.show, this.$router)
+      createItem('shows', this.show, this.$router)
         .catch(error => this.errors.push(error.message));
     },
   },

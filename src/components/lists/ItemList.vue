@@ -10,27 +10,24 @@
       I did not log any items this year 😔
     </section>
     <section v-else class="item-list">
-      <BookList v-if="items.allBooks"
+      <book-list v-if="items.allBooks"
           :allBooks="items.allBooks"
           :amountOfBooks="items.allBooks.length"
-          :isLoggedIn="isLoggedIn">
-      </BookList>
-      <MovieList v-if="items.allMovies"
+          :isLoggedIn="isLoggedIn"/>
+      <movie-list v-if="items.allMovies"
           :allMovies="items.allMovies"
           :amountOfMovies="items.allMovies.length"
-          :isLoggedIn="isLoggedIn">
-      </MovieList>
-      <ShowList v-if="items.allShows"
+          :isLoggedIn="isLoggedIn"/>
+      <show-list v-if="items.allShows"
           :allShows="items.allShows"
           :amountOfShows="items.allShows.length"
-          :isLoggedIn="isLoggedIn"
-      ></ShowList>
+          :isLoggedIn="isLoggedIn"/>
     </section>
   </section>
 </template>
 
 <script>
-import { actions } from '../../utils/crudActions';
+import { fetchAllItemsByYear } from '../../utils/crudActions';
 import BookList from './BookList';
 import MovieList from './MovieList';
 import ShowList from './ShowList';
@@ -94,7 +91,7 @@ export default {
   },
   methods: {
     fetchItems(chosenYear) {
-      actions.fetchAllItemsByYear(chosenYear)
+      fetchAllItemsByYear(chosenYear)
         .then(response => this.items = response)
         .catch((error) => {
           console.log(error);

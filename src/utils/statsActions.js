@@ -1,17 +1,24 @@
 import axios from 'axios';
 
-export const statsActions = {
-  // get all items per year
-  // http://localhost:3000/api/stats/count/2012/all
-  fetchAllItemsByYear(year) {
-    return axios
-      .get(`${process.env.VUE_APP_API_BASE_URL}/stats/count/${year}/all`)
-      .then(response => response.data);
-  },
-  //  * ex: host.com/api/stats/count/all
-  fetchAllTimeItems() {
-    return axios
-      .get(`${process.env.VUE_APP_API_BASE_URL}/stats/count/all`)
-      .then(response => response.data);
-  },
-};
+/**
+ * ex: host.com/api/stats/count/2012/all
+ * Fetch _all_ items given a certain year, and return them
+ * @function
+ * @param {string} year - The given year
+ */
+export function fetchAllItemsByYear(year) {
+  return axios
+    .get(`${process.env.VUE_APP_API_BASE_URL}/stats/count/${year}/all`)
+    .then(response => response.data);
+}
+
+/**
+ * ex: host.com/api/stats/count/all
+ * Fetch _all_ items ever
+ * @function
+ */
+export function fetchAllTimeItems() {
+  return axios
+    .get(`${process.env.VUE_APP_API_BASE_URL}/stats/count/all`)
+    .then(response => response.data);
+}

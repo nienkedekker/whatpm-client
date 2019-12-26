@@ -111,6 +111,8 @@ export default {
 </script>
 
 <style lang="scss" module>
+  @import '../../assets/css/variables';
+
   label {
     margin-bottom: 1em;
   }
@@ -121,8 +123,10 @@ export default {
 
   .searchResultsContainer {
     margin: 1em auto;
-    width: 50%;
     line-height: 2em;
+    @media (min-width: $mq-tablet) {
+      width: 50%;
+    }
   }
 
   .results {

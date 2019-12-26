@@ -4,7 +4,9 @@
     <ol v-if="allBooks">
       <li v-for="book in allBooks" :key="book._id">
         <span :class="$style.author">{{ book.author }}</span>,
-        <span :class="$style.title">{{ book.title }}</span><span v-if="book.redo" class="redo">*</span>
+        <span :class="$style.title">{{ book.title }}</span>
+
+        <span v-if="book.redo" :class="$style.redo">reread</span>
 
         <div v-if="isLoggedIn" class="edit-item">
           <RouterLink :to="{ name: 'EditBook', params: { id: book._id} }">Edit</RouterLink>
@@ -22,8 +24,8 @@
 </template>
 
 <script>
-import { actions } from '../../utils/crudActions';
-import { helpers } from '../../utils/helpers';
+import { confirmDialog } from '../../utils/helpers';
+import { deleteItem } from '../../utils/crudActions';
 
 export default {
   name: 'BookList',
@@ -40,8 +42,8 @@ export default {
   },
   methods: {
     deleteBook(book) {
-      helpers.confirmDialog('Do you really want to delete this book?')
-        .then(() => actions.deleteItem('books', book._id, this.$router))
+      confirmDialog('Do you really want to delete this book?')
+        .then(() => deleteItem('books', book._id, this.$router))
         .catch(() => console.log('did not delete!'));
     },
   },
@@ -55,5 +57,18 @@ export default {
 
   .title {
     color: #352f6a;
+  }
+
+  .redo {
+    font-size: 8px;
+    text-transform: uppercase;
+    font-weight: 500;
+    background: #352f6a;
+    color: white;
+    border-radius: 12px;
+    padding: 3px 5px;
+    opacity: .5;
+    margin-left: 5px;
+    vertical-align: middle;
   }
 </style>

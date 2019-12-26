@@ -6,7 +6,7 @@
         <span :class="$style.title">{{ show.title }}</span>
         <span :class="$style.separator">&nbsp;</span>
         <span :class="$style.season">(season {{ show.season }})</span>
-        <span v-if="show.redo" class="redo">*</span>
+        <span v-if="show.redo" :class="$style.redo">rewatch</span>
         <div v-if="isLoggedIn" class="edit-item">
           <RouterLink :to="{ name: 'EditShow', params: { id: show._id} }">Edit</RouterLink>
           <button @click.stop="deleteShow(show)">Delete</button>
@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import { actions } from '../../utils/crudActions';
-import { helpers } from '../../utils/helpers';
+import { deleteItem } from '../../utils/crudActions';
+import { confirmDialog } from '../../utils/helpers';
 
 export default {
   name: 'ShowList',
@@ -41,8 +41,8 @@ export default {
   },
   methods: {
     deleteShow(show) {
-      helpers.confirmDialog('Do you really want to delete this show?')
-        .then(() => actions.deleteItem('shows', show._id, this.$router))
+      confirmDialog('Do you really want to delete this show?')
+        .then(() => deleteItem('shows', show._id, this.$router))
         .catch(() => console.log('did not delete!'));
     },
   },
@@ -52,5 +52,17 @@ export default {
   .title {
     color: #352f6a;
   }
-  .season {}
+
+  .redo {
+    font-size: 8px;
+    text-transform: uppercase;
+    font-weight: 500;
+    background: #352f6a;
+    color: white;
+    border-radius: 12px;
+    padding: 3px 5px;
+    margin-left: 5px;
+    opacity: .5;
+    vertical-align: middle;
+  }
 </style>

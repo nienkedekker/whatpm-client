@@ -5,7 +5,7 @@
       <li v-for="movie in allMovies" :key="movie._id">
         <span :class="$style.title">{{ movie.title }}</span>
         (<span :class="$style.director">{{ movie.director }}, {{ movie.published_year }}</span>)
-        <span v-if="movie.redo">*</span>
+        <span v-if="movie.redo" :class="$style.redo">rewatch</span>
 
         <div v-if="isLoggedIn" class="edit-item">
           <RouterLink :to="{ name: 'EditMovie', params: { id: movie._id} }">Edit</RouterLink>
@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import { actions } from '../../utils/crudActions';
-import { helpers } from '../../utils/helpers';
+import { confirmDialog } from '../../utils/helpers';
+import { deleteItem } from '../../utils/crudActions';
 
 export default {
   name: 'MovieList',
@@ -41,8 +41,8 @@ export default {
   },
   methods: {
     deleteMovie(movie) {
-      helpers.confirmDialog('Do you really want to delete this movie?')
-        .then(() => actions.deleteItem('movies', movie._id, this.$router))
+      confirmDialog('Do you really want to delete this movie?')
+        .then(() => deleteItem('movies', movie._id, this.$router))
         .catch(() => console.log('did not delete!'));
     },
   },
@@ -55,5 +55,17 @@ export default {
 
 .director {
   color: #505050;
+}
+
+.redo {
+  font-size: 8px;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: #352f6a;
+  color: white;
+  border-radius: 12px;
+  padding: 3px 5px;
+  opacity: .5;
+  vertical-align: middle;
 }
 </style>

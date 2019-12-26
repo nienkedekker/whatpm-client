@@ -2,14 +2,14 @@
   <section class="form-container">
     <h2>Add Movie</h2>
     <form v-if="isLoggedIn" @submit="addMovie">
-      <MovieForm :movie="movie" :errors="errors"></MovieForm>
+      <movie-form :movie="movie" :errors="errors"/>
     </form>
   </section>
 </template>
 
 <script>
 import MovieForm from '../forms/MovieForm';
-import { actions } from '../../../utils/crudActions';
+import { createItem } from '../../../utils/crudActions';
 
 export default {
   name: 'AddMovie',
@@ -28,8 +28,7 @@ export default {
   methods: {
     addMovie(evt) {
       evt.preventDefault();
-      actions
-        .createItem('movies', this.movie, this.$router)
+      createItem('movies', this.movie, this.$router)
         .catch(error => this.errors.push(error.message));
     },
   },

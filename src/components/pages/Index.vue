@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { helpers } from '../../utils/helpers';
+import { getCurrentYear } from '../../utils/helpers';
 import ItemList from '../lists/ItemList';
 
 export default {
@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      currentYear: helpers.getCurrentYear(),
+      currentYear: getCurrentYear(),
     };
   },
   computed: {

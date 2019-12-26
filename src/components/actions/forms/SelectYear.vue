@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { helpers } from '../../../utils/helpers';
+import { range, getCurrentYear } from '../../../utils/helpers';
 
 export default {
   name: 'SelectYear',
@@ -25,10 +25,10 @@ export default {
   },
   computed: {
     currentYear() {
-      return helpers.getCurrentYear();
+      return getCurrentYear();
     },
     getRange() {
-      return helpers.range(2007, helpers.getCurrentYear() - 1);
+      return range(2007, getCurrentYear() - 1);
     },
   },
 };
