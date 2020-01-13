@@ -157,6 +157,7 @@ export default {
         color: black;
         border: 0;
         border-bottom: 1px solid #928dcd;
+        display: inline-flex;
         padding: .2em;
         font-size: 14px;
         margin-right: 10px;

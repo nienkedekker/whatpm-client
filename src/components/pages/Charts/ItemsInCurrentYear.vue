@@ -50,7 +50,7 @@ export default {
         .then((response) => {
           const { books, movies, shows } = response;
           this.chartdata = {
-            labels: ['2019'],
+            labels: ['2020'],
             datasets: [
               {
                 label: 'books',
