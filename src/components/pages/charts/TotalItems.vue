@@ -21,7 +21,6 @@ export default {
     try {
       await fetchAllTimeItems()
         .then((response) => {
-          console.log(response);
           const { books, movies, shows } = response;
           this.chartdata = {
             labels: ['books', 'movies', 'shows'],
