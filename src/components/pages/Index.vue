@@ -1,7 +1,7 @@
 <template>
   <section class="content">
-    <h1>{{ currentYear }} 🎉 </h1>
-    <ItemList :year-selection="currentYear"></ItemList>
+    <h2 class="pageHeader">{{ currentYear }} 🎉 </h2>
+    <item-list :year-selection="currentYear"/>
   </section>
 </template>
 
@@ -26,9 +26,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.current-year {
-  font-size: 2em;
-  padding: 20px 20px 0 20px;
-}
-</style>

@@ -1,14 +1,13 @@
 <template>
-  <div class="container">
+  <div>
     <bar-chart
       v-if="loaded"
-      :chartdata="chartdata"
-      :options="options"/>
+      :chartdata="chartdata" />
   </div>
 </template>
 
 <script>
-import BarChart from './BarChart.vue';
+import BarChart from './types/BarChart.vue';
 import { fetchAllItemsByYear } from '../../../utils/statsActions';
 import { getCurrentYear } from '../../../utils/helpers';
 
@@ -16,55 +15,30 @@ export default {
   components: { BarChart },
   data: () => ({
     loaded: false,
-    books: null,
-    movies: null,
-    tvshows: null,
     chartdata: null,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-          },
-          gridLines: {
-            display: true,
-          },
-        }],
-        xAxes: [{
-          gridLines: {
-            display: false,
-          },
-        }],
-      },
-      legend: {
-        display: true,
-      },
-    },
   }),
   async mounted() {
     this.loaded = false;
     try {
-      await fetchAllItemsByYear(getCurrentYear())
+      await fetchAllItemsByYear(getCurrentYear() - 1)
         .then((response) => {
           const { books, movies, shows } = response;
           this.chartdata = {
-            labels: ['2020'],
+            labels: ['2019'],
             datasets: [
               {
                 label: 'books',
-                backgroundColor: '#f87979',
+                backgroundColor: '#9656a1',
                 data: [books],
               },
               {
                 label: 'movies',
-                backgroundColor: '#5bf8bf',
+                backgroundColor: '#ffc0ad',
                 data: [movies],
               },
               {
                 label: 'tvshows',
-                backgroundColor: '#f87979',
+                backgroundColor: '#e78fb3',
                 data: [shows],
               },
             ],

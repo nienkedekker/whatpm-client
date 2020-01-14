@@ -1,5 +1,5 @@
 <template>
-  <nav class="years">
+  <nav :class="$style.years">
     <ul>
       <li v-for="i in getRange()" :key="i">
         <RouterLink :to="{ name: 'Year', params: { year: i } }">
@@ -23,21 +23,26 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
+@import "../../assets/css/variables";
+
 .years {
-  background-color: #fff;
-  padding: 10px;
-  font-family: "Work Sans", sans-serif;
-  border-bottom: 1px solid #dfdfdf;
+  background-color: $white;
+  border-bottom: 1px solid $mercury-grey;
+  padding: 0.625em;
+  text-transform: uppercase;
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  li {
+    display: inline-block;
+    margin: 0.625em 0;
+  }
 
-    li {
-      display: inline-block;
-      padding: 10px;
+  a, a:active, a:visited, a:focus {
+    padding: 0.625em;
+    color: $outerspace-grey;
+
+    &:hover {
+      color: $fuchsia-blue;
     }
   }
 }

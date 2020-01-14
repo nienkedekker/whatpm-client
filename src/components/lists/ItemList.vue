@@ -13,15 +13,18 @@
       <book-list v-if="items.allBooks"
           :allBooks="items.allBooks"
           :amountOfBooks="items.allBooks.length"
-          :isLoggedIn="isLoggedIn"/>
+          :isLoggedIn="isLoggedIn"
+      />
       <movie-list v-if="items.allMovies"
           :allMovies="items.allMovies"
           :amountOfMovies="items.allMovies.length"
-          :isLoggedIn="isLoggedIn"/>
+          :isLoggedIn="isLoggedIn"
+      />
       <show-list v-if="items.allShows"
           :allShows="items.allShows"
           :amountOfShows="items.allShows.length"
-          :isLoggedIn="isLoggedIn"/>
+          :isLoggedIn="isLoggedIn"
+      />
     </section>
   </section>
 </template>
@@ -57,25 +60,13 @@ export default {
       return this.$store.getters.isLoggedIn;
     },
     noBooks() {
-      if (this.items) {
-        if (this.items.allBooks < 1) {
-          return true;
-        }
-      } return false;
+      return this.items && this.items.allBooks < 1;
     },
     noMovies() {
-      if (this.items) {
-        if (this.items.allMovies < 1) {
-          return true;
-        }
-      } return false;
+      return this.items && this.items.allMovies < 1;
     },
     noShows() {
-      if (this.items) {
-        if (this.items.allShows < 1) {
-          return true;
-        }
-      } return false;
+      return this.items && this.items.allShows < 1;
     },
     noItems() {
       return this.noShows && this.noMovies && this.noBooks;

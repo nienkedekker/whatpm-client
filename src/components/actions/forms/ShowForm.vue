@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-element">
-      <SelectYear :item="show" :type="'Show'"></SelectYear>
+      <select-year :item="show" :type="'Show'"/>
     </div>
 
     <div class="form-element">

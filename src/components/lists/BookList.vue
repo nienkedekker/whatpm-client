@@ -10,7 +10,7 @@
 
         <div v-if="isLoggedIn" class="edit-item">
           <RouterLink :to="{ name: 'EditBook', params: { id: book._id} }">Edit</RouterLink>
-          <button @click.stop="deleteBook(book)">Delete</button>
+          <button  @click.stop="deleteBook(book)">Delete</button>
         </div>
       </li>
     </ol>
@@ -71,4 +71,9 @@ export default {
     margin-left: 5px;
     vertical-align: middle;
   }
+
+  .editItem {
+    line-height: 1;
+  }
+
 </style>

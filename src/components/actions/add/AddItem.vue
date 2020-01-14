@@ -9,10 +9,10 @@
         {{ tab }}
       </button>
     </div>
-    <Component
-        :is="currentTabComponent"
-        class="tab">
-    </Component>
+    <component
+      :is="currentTabComponent"
+      class="tab"
+    />
   </section>
 </template>
 
@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     currentTabComponent() {
-      return `Add${this.currentTab}`;
+      return `add-${this.currentTab}`;
     },
   },
 };

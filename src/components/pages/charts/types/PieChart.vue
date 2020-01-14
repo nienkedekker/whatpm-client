@@ -1,14 +1,16 @@
 <script>
-import { Bar } from 'vue-chartjs';
+import { Pie } from 'vue-chartjs';
 
 export default {
-  extends: Bar,
+  extends: Pie,
+  data: () => ({
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  }),
   props: {
     chartdata: {
-      type: Object,
-      default: null,
-    },
-    options: {
       type: Object,
       default: null,
     },

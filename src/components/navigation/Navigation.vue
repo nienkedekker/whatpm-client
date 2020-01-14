@@ -1,29 +1,45 @@
 <template>
-  <nav class="navigation">
+  <nav :class="$style.headerNavigation">
     <ul>
       <li>
-        <RouterLink :to="{ name: 'Index' }"> Home </RouterLink>
+        <router-link :to="{ name: 'Index' }">
+          Home
+        </router-link>
       </li>
       <li>
-        <RouterLink :to="{ name: 'About' }"> About </RouterLink>
+        <router-link :to="{ name: 'About' }">
+          About
+        </router-link>
       </li>
       <li>
-        <RouterLink :to="{ name: 'Search' }"> Search </RouterLink>
+        <router-link :to="{ name: 'Search' }">
+          Search
+        </router-link>
       </li>
       <li>
-        <RouterLink :to="{ name: 'Stats' }"> Stats </RouterLink>
+        <router-link :to="{ name: 'Stats' }">
+          Stats
+        </router-link>
       </li>
       <li>
-        <RouterLink :to="{ name: 'AddItem' }" v-if="isLoggedIn">Add New Item</RouterLink>
+        <router-link :to="{ name: 'AddItem' }" v-if="isLoggedIn">
+          Add New Item
+        </router-link>
       </li>
       <li>
-        <a href="/" @click="logout()" v-if="isLoggedIn">Logout</a>
+        <a href="/" @click="logout" v-if="isLoggedIn">
+          Logout
+        </a>
       </li>
       <li>
-        <RouterLink key="not-logged-in" :to="{ name: 'Login' }" v-if="!isLoggedIn">Login</RouterLink>
+        <router-link key="not-logged-in" :to="{ name: 'Login' }" v-if="!isLoggedIn">
+          Login
+        </router-link>
       </li>
       <li>
-        <RouterLink v-if="isDev && !isLoggedIn" key="logged-in" :to="{ name: 'Register' }">Register</RouterLink>
+        <router-link v-if="isDev && !isLoggedIn" key="logged-in" :to="{ name: 'Register' }">
+          Register
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -44,9 +60,10 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch('logout').then(() => {
-        this.$router.push({ name: 'Index' });
-      });
+      this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push({ name: 'Index' });
+        });
     },
   },
   computed: {
@@ -57,26 +74,26 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.navigation {
-  background: #ececec;
-  padding: 10px;
-  text-transform: uppercase;
+<style lang="scss" module>
+@import "../../assets/css/variables";
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
+.headerNavigation {
+  background-color: $mercury-grey;
+  padding: 0.625em;
+  text-transform: uppercase;
 
   li {
     display: inline-block;
-    margin: 10px 0;
+    margin: 0.625em 0;
   }
 
-  a {
-    color: #36382e;
-    padding: 10px;
+  a, a:active, a:visited, a:focus {
+    color: $outerspace-grey;
+    padding: 0.625em;
+
+    &:hover {
+      color: $fuchsia-blue;
+    }
   }
 }
 </style>

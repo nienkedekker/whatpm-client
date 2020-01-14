@@ -1,7 +1,7 @@
 <template>
   <section class="content">
     <section class="form-container">
-      <h2>Login</h2>
+      <h2 class="pageHeader">Login</h2>
       <div v-if="errors">
         <div v-for="error of errors" :key="error.index" class="errors">
           {{ error }}

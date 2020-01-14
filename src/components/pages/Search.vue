@@ -1,7 +1,7 @@
 <template>
   <section class="content">
     <div class="form-container">
-      <h2>🕵️‍♀️ Search️</h2>
+      <h2 class="pageHeader">🕵️‍♀️ Search️</h2>
         <div class="form-element" :class="$style.searchInputContainer">
           <p>Start searching by typing in the form!</p>
           <label for="search">

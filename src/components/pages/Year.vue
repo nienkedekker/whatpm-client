@@ -1,7 +1,7 @@
 <template>
   <section class="content">
-    <h1>🗓 {{ yearInRoute }}</h1>
-    <ItemList :year-selection="yearInRoute"></ItemList>
+    <h2 class="pageHeader">🗓 {{ yearInRoute }}</h2>
+    <item-list :year-selection="yearInRoute"/>
   </section>
 </template>
 

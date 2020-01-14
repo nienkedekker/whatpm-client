@@ -1,6 +1,6 @@
 <template>
   <section class="content">
-    <h1>About</h1>
+    <h2 class="pageHeader">About</h2>
     <p>I (<a href="https://nienke.dev">Nienke</a>) like to log what I read and watch in a year. Find the source code on GitHub:</p>
     <ul>
       <li><a href="https://github.com/nienkedekker/whatpm-client">Client</a></li>
@@ -10,9 +10,14 @@
 </template>
 
 <style lang="scss" scoped>
-  .content {
-    a {
-      text-decoration: underline;
-    }
-  }
+@import "../../assets/css/variables";
+
+a, a:active, a:visited, a:focus {
+  color: black;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: $fuchsia-blue;
+}
 </style>
