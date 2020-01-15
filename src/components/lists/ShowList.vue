@@ -4,7 +4,6 @@
     <ol v-if="allShows">
       <li v-for="show in allShows" :key="show._id">
         <span :class="$style.title">{{ show.title }}</span>
-        <span :class="$style.separator">&nbsp;</span>
         <span :class="$style.season">(season {{ show.season }})</span>
         <span v-if="show.redo" :class="$style.redo">rewatch</span>
         <div v-if="isLoggedIn" class="edit-item">
@@ -51,20 +50,20 @@ export default {
 };
 </script>
 <style lang="scss" module>
-  .title {
-    color: #352f6a;
-  }
+.title {
+  color: #352f6a;
+}
 
-  .redo {
-    font-size: 8px;
-    text-transform: uppercase;
-    font-weight: 500;
-    background: #352f6a;
-    color: white;
-    border-radius: 12px;
-    padding: 3px 5px;
-    margin-left: 5px;
-    opacity: .5;
-    vertical-align: middle;
-  }
+.redo {
+  font-size: 8px;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: #352f6a;
+  color: white;
+  border-radius: 12px;
+  padding: 3px 5px;
+  margin-left: 5px;
+  opacity: .5;
+  vertical-align: middle;
+}
 </style>
