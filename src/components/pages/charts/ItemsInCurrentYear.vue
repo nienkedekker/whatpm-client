@@ -45,11 +45,11 @@ export default {
           };
         })
         .catch((error) => {
-          console.log(error);
+          this.$sentry.captureException(new Error(`Could not fetch all items by year for stats: ${error}`));
         });
       this.loaded = true;
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      this.$sentry.captureException(new Error(`Could not render items in current year chart: ${error}`));
     }
   },
 };

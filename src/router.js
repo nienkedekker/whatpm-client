@@ -7,7 +7,6 @@ import Year from './components/pages/Year.vue';
 
 import About from './components/pages/About.vue';
 import Search from './components/pages/Search.vue';
-import Stats from './components/pages/Stats.vue';
 
 import AddItem from './components/actions/add/AddItem.vue';
 import EditBook from './components/actions/edit/EditBook.vue';
@@ -65,7 +64,7 @@ export default new Router({
     {
       path: '/stats',
       name: 'Stats',
-      component: Stats,
+      component: () => import(/* webpackChunkName: "stats" */ './components/pages/Stats.vue'),
     },
     {
       path: '/login',

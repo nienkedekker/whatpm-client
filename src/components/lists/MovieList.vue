@@ -43,7 +43,9 @@ export default {
     deleteMovie(movie) {
       confirmDialog('Do you really want to delete this movie?')
         .then(() => deleteItem('movies', movie._id, this.$router))
-        .catch(() => console.log('did not delete!'));
+        .catch((message) => {
+          this.$sentry.captureMessage(`Did not delete movie: ${message}`);
+        });
     },
   },
 };

@@ -33,11 +33,11 @@ export default {
           };
         })
         .catch((error) => {
-          console.log(error);
+          this.$sentry.captureException(new Error(`Could not fetch all time items for stats: ${error}`));
         });
       this.loaded = true;
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      this.$sentry.captureException(new Error(`Could not render total items chart: ${error}`));
     }
   },
 };

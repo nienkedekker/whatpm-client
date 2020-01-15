@@ -65,7 +65,9 @@ export default {
           this.showNoResultsMessage = response.length <= 0;
           this.filterItemsByType(response);
         })
-        .catch(error => console.log(error));
+        .catch((error) => {
+          this.$sentry.captureException(new Error(`Something went wrong with search: ${error}`));
+        });
     },
     filterItemsByType() {
       const results = this.searchResults;

@@ -30,13 +30,18 @@ export default {
   created() {
     fetchSingleItemById('books', this.$route.params.id)
       .then((response) => { this.book = response; })
-      .catch(error => console.log(error));
+      .catch((error) => {
+        this.$sentry.captureException(new Error(`Could not fetch book item by id: ${error}`));
+      });
   },
   methods: {
     editBook(event) {
       event.preventDefault();
       updateItem('books', this.$route.params.id, this.book, this.$router)
-        .catch(error => this.errors.push(error.message));
+        .catch((error) => {
+          this.errors.push(error.message);
+          this.$sentry.captureException(new Error(`Could not edit book: ${error.message}`));
+        });
     },
   },
 };

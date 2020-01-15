@@ -30,13 +30,18 @@ export default {
   created() {
     fetchSingleItemById('movies', this.$route.params.id)
       .then(response => (this.movie = response))
-      .catch(error => console.log(error));
+      .catch((error) => {
+        this.$sentry.captureException(new Error(`Could not fetch movie item by id: ${error}`));
+      });
   },
   methods: {
     editMovie(event) {
       event.preventDefault();
       updateItem('movies', this.$route.params.id, this.movie, this.$router)
-        .catch(error => this.errors.push(error.message));
+        .catch((error) => {
+          this.errors.push(error.message);
+          this.$sentry.captureException(new Error(`Could not edit movie: ${error.message}`));
+        });
     },
   },
 };

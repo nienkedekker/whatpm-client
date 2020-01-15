@@ -85,7 +85,7 @@ export default {
       fetchAllItemsByYear(chosenYear)
         .then(response => this.items = response)
         .catch((error) => {
-          console.log(error);
+          this.$sentry.captureException(new Error(`Could not fetch item list: ${error}`));
           this.errored = true;
         })
         .finally(() => {

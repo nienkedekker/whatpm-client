@@ -43,7 +43,9 @@ export default {
     deleteShow(show) {
       confirmDialog('Do you really want to delete this show?')
         .then(() => deleteItem('shows', show._id, this.$router))
-        .catch(() => console.log('did not delete!'));
+        .catch((message) => {
+          this.$sentry.captureMessage(`Did not delete show: ${message}`);
+        });
     },
   },
 };

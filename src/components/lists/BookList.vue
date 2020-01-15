@@ -44,7 +44,9 @@ export default {
     deleteBook(book) {
       confirmDialog('Do you really want to delete this book?')
         .then(() => deleteItem('books', book._id, this.$router))
-        .catch(() => console.log('did not delete!'));
+        .catch((message) => {
+          this.$sentry.captureMessage(`Did not delete book: ${message}`);
+        });
     },
   },
 };

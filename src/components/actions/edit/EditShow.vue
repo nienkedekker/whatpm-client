@@ -30,13 +30,18 @@ export default {
   created() {
     fetchSingleItemById('shows', this.$route.params.id)
       .then(response => (this.show = response))
-      .catch(error => console.log(error));
+      .catch((error) => {
+        this.$sentry.captureException(new Error(`Could not fetch tv show item by id: ${error}`));
+      });
   },
   methods: {
     editShow(event) {
       event.preventDefault();
       updateItem('shows', this.$route.params.id, this.show, this.$router)
-        .catch(error => this.errors.push(error.message));
+        .catch((error) => {
+          this.errors.push(error.message);
+          this.$sentry.captureException(new Error(`Could not edit tv show: ${error.message}`));
+        });
     },
   },
 };
