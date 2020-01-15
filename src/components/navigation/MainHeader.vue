@@ -23,7 +23,7 @@ export default {
 </script>
 <style lang="scss" module>
 
-@import url('https://fonts.googleapis.com/css?family=Mr+Dafoe');
+@import url('https://fonts.googleapis.com/css?family=Mr+Dafoe&display=swap&text=whatpm');
 @import "../../assets/css/variables";
 
 .header {
