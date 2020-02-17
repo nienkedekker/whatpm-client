@@ -7,7 +7,7 @@ import store from './store';
 
 Vue.config.productionTip = false;
 Sentry.init({
-  dsn: 'https://8a56142115674c9eb3b1d794eee1c930@sentry.io/1883223',
+  dsn: `${process.env.VUE_APP_SENTRY_DSN}`,
   integrations: [new Integrations.Vue({ Vue, attachProps: true })],
 });
 Vue.prototype.$sentry = Sentry;
