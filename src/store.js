@@ -37,7 +37,7 @@ export default new Vuex.Store({
         axios.post(`${process.env.VUE_APP_API_BASE_URL}/authentication/login/`, loginPayload)
           .then((response) => {
             axios.defaults.headers.common.Authorization = `${response.data.token}`;
-            Cookie.set('mevn-token', response.data.token, { sameSite: 'lax' });
+            Cookie.set('mevn-token', response.data.token, { sameSite: 'lax', secure: true });
             commit('auth_success', response.data.token);
             resolve(response);
           })
