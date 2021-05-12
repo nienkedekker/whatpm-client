@@ -11,7 +11,7 @@
     "@sentry/browser": "^5.11.1",
     "@sentry/integrations": "^5.11.1",
     "axios": ">=0.21.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "dotenv": "^6.2.0",
     "js-cookie": "^2.2.0",
     "lodash.debounce": "^4.0.8",
